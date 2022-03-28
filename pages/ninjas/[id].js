@@ -1,3 +1,4 @@
+import Title from "../../components/Title";
 export const getStaticPaths = async () => {
 	const res = await fetch("https://jsonplaceholder.typicode.com/users");
 	const data = await res.json();
@@ -28,10 +29,14 @@ const Details = (props) => {
 	const { ninja } = props;
 	return (
 		<div>
-			<h1>{ninja.name}</h1>
-			<p>{ninja.email}</p>
-			<p>{ninja.website}</p>
-			<p>{ninja.address.city}</p>
+			<Title title={`Ninja | ${ninja.id}`} />
+
+			<div>
+				<h1>{ninja.name}</h1>
+				<p>{ninja.email}</p>
+				<p>{ninja.website}</p>
+				<p>{ninja.address.city}</p>
+			</div>
 		</div>
 	);
 };
